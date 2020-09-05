@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {getStory} from '../services/hackernewsApi'
 import {StoryWrapper,StoryTitle,StoryMeta,StoryMetaElemet} from '../styles/StoryStyles'
-
+import {mapTime} from '../mappers/mapTime'
 
 export const Story=({storyId})=>{
 const [story,setStory]=useState([])
@@ -21,7 +21,8 @@ return story && story.url ?(
              <StoryMetaElemet color="#000">By:</StoryMetaElemet>{story.by}
          </span>
          <span data-id="story-time"> 
-         <StoryMetaElemet color="#000">Posted:</StoryMetaElemet>{story.time}
+         <StoryMetaElemet color="#000">Posted:</StoryMetaElemet>
+         {mapTime(story.time)}
          </span>
     </StoryMeta> 
 
